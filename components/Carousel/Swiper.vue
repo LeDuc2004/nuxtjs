@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const containerRef = ref(null)
-const slides = ref(Array.from({ length: 10 }))
-const swiper = useSwiper(containerRef, {
-  effect: 'creative',
+const containerRef1 = ref(null);
+const slides = ref(Array.from({ length: 10 }));
+const swiper = useSwiper(containerRef1, {
+  effect: "creative",
   loop: true,
   autoplay: {
     delay: 5000,
@@ -17,20 +17,20 @@ const swiper = useSwiper(containerRef, {
       translate: [0, 0, -400],
     },
   },
-})
+});
 
 onMounted(() => {
-  console.log(swiper.instance)
-})
+  console.log(swiper.instance);
+});
 </script>
 
 <template>
   <ClientOnly>
-    <swiper-container ref="containerRef" :init="false">
+    <swiper-container ref="containerRef1" :init="false">
       <swiper-slide
         v-for="(slide, idx) in slides"
         :key="idx"
-        style="background-color: rgb(32, 233, 70); color: white;"
+        style="background-color: rgb(32, 233, 70); color: white"
       >
         Slide {{ idx + 1 }}
       </swiper-slide>
@@ -38,7 +38,10 @@ onMounted(() => {
   </ClientOnly>
 </template>
 
-<style lang="css">
+<style lang="css" scoped>
+swiper-container {
+  width: 100vw;
+}
 swiper-slide {
   display: flex;
   justify-content: center;
@@ -47,6 +50,6 @@ swiper-slide {
   height: 20vh;
   font-size: 4rem;
   font-weight: bold;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 </style>
